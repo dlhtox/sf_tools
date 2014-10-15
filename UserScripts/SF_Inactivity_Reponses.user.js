@@ -2,7 +2,7 @@
 // @name        SF_Inactivity_Reponses
 // @namespace   https://github.com/b1kjsh/sf_tools
 // @include     https://na19.salesforce.com/500*
-// @require     http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
+// @require     https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
 // @updateURL	https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_Inactivity_Reponses.user.js
 // @downloadURL https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_Inactivity_Reponses.user.js
 // @version     1
