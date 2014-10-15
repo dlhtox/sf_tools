@@ -11,7 +11,7 @@
 
 
 $(document).ready(function () {
-    console.log("---SF_color_coding loaded in window---");
+    console.log("---SF_color_coding loaded in window version 0.32---");
     var mArray = [];
     function getCases() {
         var selector = $(".x-grid3-td-CASES_CASE_NUMBER");
