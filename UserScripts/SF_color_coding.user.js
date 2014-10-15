@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name       SF_color_coding
-// @namespace  http://use.i.E.your.homepage/
+// @namespace  https://github.com/b1kjsh/sf_tools
 // @version    0.33
 // @grant       none
 // @description  Days Since Updated and the Case Status column is required for this script.
