@@ -5,6 +5,7 @@
 // @grant       none
 // @description  Days Since Updated and the Case Status column is required for this script.
 // @include     https://na19.salesforce.com/500?*
+// @require     http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
 // @copyright  2012+, You
 // ==/UserScript==
 
