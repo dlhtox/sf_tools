@@ -1,4 +1,4 @@
-b1kjsh's LANDesk SF Tools
+LANDesk SF Tools
 ========
 
 These are all of my userscripts I use to make salesforce more manageable. 
