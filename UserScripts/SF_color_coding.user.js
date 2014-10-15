@@ -33,65 +33,73 @@ $(document).ready(function () {
 
     function colorAged() {
         console.log('---Checking Case Age---');
-        $('.x-grid3-col-00N30000004r0fd').each(function() {
-            // console.log($(this).html());
-            if ($(this).html() == 1 && $(this).parent("td").parent("tr").find('.x-grid3-col-CASES_STATUS:contains("Waiting")').length > 0){
-                $(this).parent("td").parent("tr").parent("tbody").css('background', '#EBC299');
+        if ($('.x-grid3-col-00N30000004r0fd').length){
+                $('.x-grid3-col-00N30000004r0fd').each(function() {
+                    // console.log($(this).html());
+                    if ($(this).html() == 1 && $(this).parent("td").parent("tr").find('.x-grid3-col-CASES_STATUS:contains("Waiting")').length > 0){
+                        $(this).parent("td").parent("tr").parent("tbody").css('background', '#EBC299');
+                    }
+                    if ($(this).html() > 1){
+                        $(this).parent("td").parent("tr").parent("tbody").css('background', '#FFCC66');
+                    }
+                    if ($(this).html() > 2 ) {
+                        $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF9933');
+                    }
+                    if ($(this).html() > 3 ) {
+                        $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF3300');
+                    }            
+                });    
+            } else {
+                alert('Missing "Days Since Last Modified" column from case view');
             }
-            if ($(this).html() > 1){
-                $(this).parent("td").parent("tr").parent("tbody").css('background', '#FFCC66');
-            }
-            if ($(this).html() > 2 ) {
-                $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF9933');
-            }
-            if ($(this).html() > 3 ) {
-                $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF3300');
-            }            
-        });    
         checkPRT();
     }
 
     function checkPRT() {
         console.log('---Checking Case PRT---');
-        $('.x-grid3-col-00N30000004r0gN').each(function() {
-
-            var parent = $(this).parent("td").parent("tr").find('td');
-            var mdate = new Date();
-            var cdate = new Date($(this).html());
-            console.log(cdate.toDateString());
-            var diffDate = cdate - mdate;
-            var hourDiff = Math.floor(diffDate / 1000 / 60 / 60);
-            if ( hourDiff <= 24 && hourDiff > 12 ){
-                // console.log(diffDate, hourDiff);
-
-            }
-            if ( hourDiff <= 12 && hourDiff > 8 ){
-                // console.log(diffDate, hourDiff);
-                console.log(hourDiff,"Yellow Case: " + casess);
-                    parent.find('div').css('font', 'italic 12px/18px Arial, Helvetica, sans-serif');
-                // $(this).parent("td").parent("tr").parent("tbody").css('background', '#EBC299');
-            }
-            if ( hourDiff <= 8 && hourDiff > 6 ){
-                // console.log(diffDate, hourDiff);
-                console.log(hourDiff,"Orange Case: " + casess);
-                parent.find('.x-grid3-col-CASES_CASE_NUMBER').each(function() {
-                    parent.find('div').css('font', 'bold 12px/18px Arial, Helvetica, sans-serif');
-                    $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF9933');
+        if ($('.x-grid3-col-00N30000004r0gN').length){
+                $('.x-grid3-col-00N30000004r0gN').each(function() {
+        
+                    var parent = $(this).parent("td").parent("tr").find('td');
+                    var mdate = new Date();
+                    var cdate = new Date($(this).html());
+                    console.log(cdate.toDateString());
+                    var diffDate = cdate - mdate;
+                    var hourDiff = Math.floor(diffDate / 1000 / 60 / 60);
+                    if ( hourDiff <= 24 && hourDiff > 12 ){
+                        // console.log(diffDate, hourDiff);
+        
+                    }
+                    if ( hourDiff <= 12 && hourDiff > 8 ){
+                        // console.log(diffDate, hourDiff);
+                        console.log(hourDiff,"Yellow Case: " + casess);
+                            parent.find('div').css('font', 'italic 12px/18px Arial, Helvetica, sans-serif');
+                        // $(this).parent("td").parent("tr").parent("tbody").css('background', '#EBC299');
+                    }
+                    if ( hourDiff <= 8 && hourDiff > 6 ){
+                        // console.log(diffDate, hourDiff);
+                        console.log(hourDiff,"Orange Case: " + casess);
+                        parent.find('.x-grid3-col-CASES_CASE_NUMBER').each(function() {
+                            parent.find('div').css('font', 'bold 12px/18px Arial, Helvetica, sans-serif');
+                            $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF9933');
+                        });
+        
+                    }
+                    if ( hourDiff <= 6 && hourDiff > 3 ){
+                        // console.log(diffDate, hourDiff);
+                    }
+                    if ( hourDiff <= 3 ){
+                        var casess = $(this).parent("td").parent("tr").find('.x-grid3-col-CASES_CASE_NUMBER').find('a').html();
+                        console.log(hourDiff,"Red Case: " + casess);
+                        parent.find('.x-grid3-col-CASES_CASE_NUMBER').each(function() {
+                            parent.find('div').css('font', 'italic bold 12px/18px Arial, Helvetica, sans-serif');
+                            $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF3300');
+                        });
+                    }
                 });
-
-            }
-            if ( hourDiff <= 6 && hourDiff > 3 ){
-                // console.log(diffDate, hourDiff);
-            }
-            if ( hourDiff <= 3 ){
-                var casess = $(this).parent("td").parent("tr").find('.x-grid3-col-CASES_CASE_NUMBER').find('a').html();
-                console.log(hourDiff,"Red Case: " + casess);
-                parent.find('.x-grid3-col-CASES_CASE_NUMBER').each(function() {
-                    parent.find('div').css('font', 'italic bold 12px/18px Arial, Helvetica, sans-serif');
-                    $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF3300');
-                });
-            }
-        });
+        } else {
+            alert('Missing "PRT Target" column from case view');
+        }
 
     }
 
