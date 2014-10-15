@@ -47,6 +47,7 @@ function createButton(val) {
 		val = resp_02;
 		break;
 	}
+	console.log("---Created Button '"+ val +"'---");
 	$('#'+id).click(function() {mClick(val);});
 }
 

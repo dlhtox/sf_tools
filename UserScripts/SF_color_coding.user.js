@@ -1,10 +1,10 @@
 // ==UserScript==
 // @name       SF_color_coding
 // @namespace  http://use.i.E.your.homepage/
-// @version    0.3
+// @version    0.31
 // @grant       none
 // @description  Days Since Updated and the Case Status column is required for this script.
-// @include     shttps://na19.salesforce.com/500?*
+// @include     https://na19.salesforce.com/500?*
 // @copyright  2012+, You
 // ==/UserScript==
 
