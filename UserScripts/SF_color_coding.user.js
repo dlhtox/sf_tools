@@ -6,7 +6,6 @@
 // @description  Days Since Updated and the Case Status column is required for this script.
 // @include     https://na19.salesforce.com/500?*
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
-// @updateURL   https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_color_coding.user.js
 // @downloadURL   https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_color_coding.user.js
 // @copyright  2012+, You
 // ==/UserScript==
