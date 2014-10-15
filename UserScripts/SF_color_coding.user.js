@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       SF_color_coding
 // @namespace  http://use.i.E.your.homepage/
-// @version    0.32
+// @version    0.33
 // @grant       none
 // @description  Days Since Updated and the Case Status column is required for this script.
 // @include     https://na19.salesforce.com/500?*
@@ -14,7 +14,7 @@
 
 
 $(document).ready(function () {
-    console.log("---SF_color_coding loaded in window version 0.32---");
+    console.log("---SF_color_coding loaded in window version 0.33---");
     var mArray = [];
     function getCases() {
         var selector = $(".x-grid3-td-CASES_CASE_NUMBER");
