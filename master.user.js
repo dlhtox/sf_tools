@@ -5,6 +5,7 @@
 // @grant       none
 // @description  Master list of salesforce scripts
 // @require    http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
+// @require    https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_color_coding.user.js
 // @updateURL   https://github.com/b1kjsh/sf_tools/raw/master/master.user.js
 // @downloadURL   https://github.com/b1kjsh/sf_tools/raw/master/master.user.js
 // @copyright  2012+, You
@@ -12,5 +13,4 @@
 
 $(function () {
 	console.log("Loaded Master");
-	$.getScript("UserScripts/SF_color_coding.user.js");
 });
