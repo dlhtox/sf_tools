@@ -10,10 +10,8 @@
 // @copyright  2012+, You
 // ==/UserScript==
 
-
-
 $(document).ready(function () {
-    console.log("---SF_color_coding loaded in window version 0.33---");
+    console.log("---SF_color_coding loaded in window version " + GM_info.script.version +"---");
     var mArray = [];
     function getCases() {
         var selector = $(".x-grid3-td-CASES_CASE_NUMBER");
