@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       		MasterList
 // @namespace  		https://github.com/b1kjsh/sf_tools
-// @version    		0.23
+// @version    		0.40
 // @grant       	none
 // @description		Master list of salesforce scripts
 // @copyright  		2014+, Joshua Howard
