@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       SF_color_coding
 // @namespace  https://github.com/b1kjsh/sf_tools
-// @version    0.40
+// @version    0.42
 // @grant       none
 // @description  Days Since Updated and the Case Status column is required for this script.
 // @include     https://na19.salesforce.com/500?*
@@ -32,26 +32,26 @@ $(document).ready(function () {
 
     function colorAged() {
         console.log('---Checking Case Age---');
-        if ($('.x-grid3-col-00N30000004r0fd').length){
-                $('.x-grid3-col-00N30000004r0fd').each(function() {
-                    // console.log($(this).html());
-                    if ($(this).html() == 1 && $(this).parent("td").parent("tr").find('.x-grid3-col-CASES_STATUS:contains("Waiting")').length > 0){
-                        $(this).parent("td").parent("tr").parent("tbody").css('background', '#EBC299');
+                if ($('.x-grid3-col-00N30000004r0fd').length){
+                        $('.x-grid3-col-00N30000004r0fd').each(function() {
+                            // console.log($(this).html());
+                            if ($(this).html() == 1 && $(this).parent("td").parent("tr").find('.x-grid3-col-CASES_STATUS:contains("Waiting")').length > 0){
+                                $(this).parent("td").parent("tr").parent("tbody").css('background', '#EBC299');
+                            }
+                            if ($(this).html() > 1){
+                                $(this).parent("td").parent("tr").parent("tbody").css('background', '#FFCC66');
+                            }
+                            if ($(this).html() > 2 ) {
+                                $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF9933');
+                            }
+                            if ($(this).html() > 3 ) {
+                                $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF3300');
+                            }            
+                        });    
+                    } else {
+                        alert('Missing "Days Since Last Modified" column from case view');
                     }
-                    if ($(this).html() > 1){
-                        $(this).parent("td").parent("tr").parent("tbody").css('background', '#FFCC66');
-                    }
-                    if ($(this).html() > 2 ) {
-                        $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF9933');
-                    }
-                    if ($(this).html() > 3 ) {
-                        $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF3300');
-                    }            
-                });    
-            } else {
-                alert('Missing "Days Since Last Modified" column from case view');
-            }
-        checkPRT();
+                checkPRT();
     }
 
     function checkPRT() {
@@ -113,19 +113,20 @@ $(document).ready(function () {
         // $('.x-grid3-col-00N30000004r0fO').css('visibility','hidden');
         
     }
-
-    setTimeout(function() {
-        color();
-        colorAged();
-    }, 5000);
-
-    $(window).resize(function() {
+    if ($('#Case_Tab').find('a').attr('title').val() == 'Cases Tab - Selected'){
         setTimeout(function() {
             color();
             colorAged();
-        }, 1000);        
-    });
-    console.log(mArray.toString(),n);
+        }, 5000);
+
+        $(window).resize(function() {
+            setTimeout(function() {
+                color();
+                colorAged();
+            }, 1000);        
+        });
+        console.log(mArray.toString(),n);
+    }
 
     var open = window.XMLHttpRequest.prototype.open,
     send = window.XMLHttpRequest.prototype.send,
