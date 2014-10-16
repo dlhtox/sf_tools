@@ -113,7 +113,7 @@ $(document).ready(function () {
         // $('.x-grid3-col-00N30000004r0fO').css('visibility','hidden');
         
     }
-    if ($('#Case_Tab').find('a').attr('title').val() == 'Cases Tab - Selected'){
+    if ($('#Case_Tab').find('a').is('Cases Tab - Selected')){
         setTimeout(function() {
             color();
             colorAged();
