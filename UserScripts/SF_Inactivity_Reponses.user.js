@@ -7,10 +7,10 @@
 // @version     1.1
 // @grant       none
 // ==/UserScript==
-// $(document).ready(function() {
 
-	var resp_00,resp_01,resp_02;
-	var resp_00_button,resp_01_button,resp_02_button;
+console.log("---SF_Inactivity_Reponses loaded in window version " + GM_info.script.version +"---");
+var resp_00,resp_01,resp_02;
+var resp_00_button,resp_01_button,resp_02_button;
 
 
 // Based off information from Days since last modified is greater than 2, and the case status is Open: Waiting on Customer
