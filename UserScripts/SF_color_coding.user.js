@@ -115,8 +115,10 @@ function color() {
     }
     
     setTimeout(function() {
+        if ($('#Case_Tab').find('a').is('Cases Tab - Selected')){
         color();
         colorAged();
+    }
     }, 5000);
 
     $(window).resize(function() {
