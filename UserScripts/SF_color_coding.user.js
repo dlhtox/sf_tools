@@ -10,7 +10,7 @@
 // @copyright  2012+, You
 // ==/UserScript==
 
-console.log("---SF_color_coding loaded in window version " + GM_info.script.version +"---");
+console.log("---SF_color_coding loaded in window version 0.43---");
 
 $(document).ready(function () {
     var mArray = [];
