@@ -115,15 +115,13 @@ function color() {
     }
     
     setTimeout(function() {
-        if ($('#Case_Tab').find('a').is('Cases Tab - Selected')){
-            if ($('.listButtons').find('.btn').is('Change Owner')){
+        if ($('.x-grid3-row-table').length){
                 color();
                 colorAged();}
-            }
         }, 5000);
 
     $(window).resize(function() {
-        if ($('#Case_Tab').find('a').is('Cases Tab - Selected') && $('.listButtons').find('.btn').is('Change Owner')){
+        if ($('.x-grid3-row-table').length){
             setTimeout(function() {
                 color();
                 colorAged();
