@@ -116,13 +116,14 @@ function color() {
     
     setTimeout(function() {
         if ($('#Case_Tab').find('a').is('Cases Tab - Selected')){
-        color();
-        colorAged();
-    }
-    }, 5000);
+            if ($('.listButtons').find('.btn').is('Change Owner')){
+                color();
+                colorAged();}
+            }
+        }, 5000);
 
     $(window).resize(function() {
-        if ($('#Case_Tab').find('a').is('Cases Tab - Selected')){
+        if ($('#Case_Tab').find('a').is('Cases Tab - Selected') && $('.listButtons').find('.btn').is('Change Owner')){
             setTimeout(function() {
                 color();
                 colorAged();
@@ -141,11 +142,11 @@ function color() {
         if (/ListServlet/.test(url)){
             setTimeout(function () {
                 if ($('#Case_Tab').find('a').is('Cases Tab - Selected')){
-                   color();
-                   colorAged();
-                   getCases();
-               }
-           }, 500);
+                 color();
+                 colorAged();
+                 getCases();
+             }
+         }, 500);
             console.log('Case Refresh Detected','Attempting to color found objects');
         }
         return open.apply(this, arguments);
