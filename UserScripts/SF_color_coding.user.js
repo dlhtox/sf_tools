@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       SF_color_coding
 // @namespace  https://github.com/b1kjsh/sf_tools
-// @version    0.44
+// @version    0.45
 // @grant       none
 // @description  Days Since Updated and the Case Status column is required for this script.
 // @include     https://na19.salesforce.com/500?*
@@ -31,7 +31,7 @@ $(document).ready(function () {
     }
 
     function colorAged() {
-        console.log('---Checking Case Age---');
+        console.log('colorAged()','---Checking Case Age---');
         if ($('.x-grid3-col-00N30000004r0fd').length){
             $('.x-grid3-col-00N30000004r0fd').each(function() {
                             // console.log($(this).html());
@@ -55,7 +55,7 @@ $(document).ready(function () {
     }
 
     function checkPRT() {
-        console.log('---Checking Case PRT---');
+        console.log('checkPRT()','---Checking Case PRT---');
         if ($('.x-grid3-col-00N30000004r0gN').length){
             $('.x-grid3-col-00N30000004r0gN').each(function() {
 
@@ -104,7 +104,7 @@ $(document).ready(function () {
 
 
 function color() {
-    console.log('---Checking Case Status---');
+    console.log('color()','---Checking Case Status---');
     $(".x-grid3-row-table").find(("div:contains('Open: Not Reviewed')")).parent("td").parent("tr").parent("tbody").css('background', '#ffaf9b');
     $(".x-grid3-row-table").find(("div:contains('Open: Under Review')")).parent("td").parent("tr").parent("tbody").css('background', '#9beeff');
     $(".x-grid3-row-table").find(("div:contains('Open: Escalated to')")).parent("td").parent("tr").parent("tbody").css('background', '#f1ff9b');
@@ -124,14 +124,25 @@ function color() {
                     }
         }, 500);
 
+    // $(window).resize(function() {
+    //     if ($('.x-grid3-row-table').length){
+    //         setTimeout(function() {
+    //             color();
+    //             colorAged();
+    //         }, 1000);        
+    //     }
+    // });
     $(window).resize(function() {
-        if ($('.x-grid3-row-table').length){
-            setTimeout(function() {
-                color();
-                colorAged();
-            }, 1000);        
-        }
-    });
+        setTimeout(function() {
+        if (window.location.href.indexOf("https://na19.salesforce.com/500") > -1 ) {
+                if ($('.x-grid3-row-table').length){
+                        color();
+                        colorAged();}
+                    } else {
+                        setTimeout();
+                    }
+        }, 500);});
+
     if (debug) {console.log(mArray.toString(),n);}
 
     var open = window.XMLHttpRequest.prototype.open,
@@ -142,14 +153,12 @@ function color() {
         var syncMode = async !== false ? 'async' : 'sync';
         console.warn('Preparing ' + syncMode + ' HTTP request : ' + method + ' ' + url);
         if (/ListServlet/.test(url)){
+            if (debug) {console.log('openReplacement()','Case Refresh Detected! Attempting to color found objects');}
             setTimeout(function () {
-                if ($('#Case_Tab').find('a').is('Cases Tab - Selected')){
                  color();
                  colorAged();
                  getCases();
-             }
          }, 500);
-            if (debug) {console.log('Case Refresh Detected','Attempting to color found objects');}
         }
         return open.apply(this, arguments);
     }
