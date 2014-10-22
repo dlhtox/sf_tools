@@ -9,17 +9,17 @@
 // @downloadURL   https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_color_coding.user.js
 // @copyright  2012+, You
 // ==/UserScript==
-
-console.log("---SF_color_coding loaded in window version 0.43---");
+var debug = false;
+console.log("---"+GM_info.script.name+" loaded in window version "+GM_info.script.version+"---");
 
 $(document).ready(function () {
     var mArray = [];
     function getCases() {
         var selector = $(".x-grid3-td-CASES_CASE_NUMBER");
         // selector.css('background','#000000');
-        console.log(selector.length);
+        if (debug) {console.log(selector.length);}
         selector.each(function() {
-            // console.log('test');
+            // if (debug) {console.log('test');}
             var k = $(this).find('div').find('a').attr('href');
             mArray.push(k);
             // console.log('k is',k);
@@ -62,22 +62,22 @@ $(document).ready(function () {
                 var parent = $(this).parent("td").parent("tr").find('td');
                 var mdate = new Date();
                 var cdate = new Date($(this).html());
-                console.log(cdate.toDateString());
+                if (debug) {console.log(cdate.toDateString());}
                 var diffDate = cdate - mdate;
                 var hourDiff = Math.floor(diffDate / 1000 / 60 / 60);
                 if ( hourDiff <= 24 && hourDiff > 12 ){
-                        // console.log(diffDate, hourDiff);
+                        // if (debug) {console.log(diffDate, hourDiff);}
 
                     }
                     if ( hourDiff <= 12 && hourDiff > 8 ){
-                        // console.log(diffDate, hourDiff);
-                        console.log(hourDiff,"Yellow Case: " + casess);
+                        // if (debug) {console.log(diffDate, hourDiff);}
+                        if (debug) {console.log(hourDiff,"Yellow Case: " + casess);}
                         parent.find('div').css('font', 'italic 12px/18px Arial, Helvetica, sans-serif');
                         // $(this).parent("td").parent("tr").parent("tbody").css('background', '#EBC299');
                     }
                     if ( hourDiff <= 8 && hourDiff > 6 ){
-                        // console.log(diffDate, hourDiff);
-                        console.log(hourDiff,"Orange Case: " + casess);
+                        // if (debug) {console.log(diffDate, hourDiff);}
+                        if (debug) {console.log(hourDiff,"Orange Case: " + casess);}
                         parent.find('.x-grid3-col-CASES_CASE_NUMBER').each(function() {
                             parent.find('div').css('font', 'bold 12px/18px Arial, Helvetica, sans-serif');
                             $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF9933');
@@ -85,11 +85,11 @@ $(document).ready(function () {
 
                     }
                     if ( hourDiff <= 6 && hourDiff > 3 ){
-                        // console.log(diffDate, hourDiff);
+                        // if (debug) {console.log(diffDate, hourDiff);}
                     }
                     if ( hourDiff <= 3 ){
                         var casess = $(this).parent("td").parent("tr").find('.x-grid3-col-CASES_CASE_NUMBER').find('a').html();
-                        console.log(hourDiff,"Red Case: " + casess);
+                        if (debug) {console.log(hourDiff,"Red Case: " + casess);}
                         parent.find('.x-grid3-col-CASES_CASE_NUMBER').each(function() {
                             parent.find('div').css('font', 'italic bold 12px/18px Arial, Helvetica, sans-serif');
                             $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF3300');
@@ -115,10 +115,14 @@ function color() {
     }
     
     setTimeout(function() {
-        if ($('.x-grid3-row-table').length){
-                color();
-                colorAged();}
-        }, 5000);
+        if (window.location.href.indexOf("https://na19.salesforce.com/500") > -1 ) {
+                if ($('.x-grid3-row-table').length){
+                        color();
+                        colorAged();}
+                    } else {
+                        setTimeout();
+                    }
+        }, 500);
 
     $(window).resize(function() {
         if ($('.x-grid3-row-table').length){
@@ -128,7 +132,7 @@ function color() {
             }, 1000);        
         }
     });
-    console.log(mArray.toString(),n);
+    if (debug) {console.log(mArray.toString(),n);}
 
     var open = window.XMLHttpRequest.prototype.open,
     send = window.XMLHttpRequest.prototype.send,
@@ -145,7 +149,7 @@ function color() {
                  getCases();
              }
          }, 500);
-            console.log('Case Refresh Detected','Attempting to color found objects');
+            if (debug) {console.log('Case Refresh Detected','Attempting to color found objects');}
         }
         return open.apply(this, arguments);
     }
