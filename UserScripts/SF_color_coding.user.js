@@ -153,7 +153,7 @@ function color() {
         var syncMode = async !== false ? 'async' : 'sync';
         console.warn('Preparing ' + syncMode + ' HTTP request : ' + method + ' ' + url);
         if (/ListServlet/.test(url)){
-            if (debug) {console.log('openReplacement()','Case Refresh Detected! Attempting to color found objects');}
+            if (debug) {console.log('openReplacement()','Case Refresh Detected! Attempting to color found objects!');}
             setTimeout(function () {
                  color();
                  colorAged();
