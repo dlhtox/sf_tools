@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name       SF_webex_scheduling
 // @namespace  https://github.com/b1kjsh/sf_tools
-// @version    0.10
+// @version    0.11
 // @grant       none
 // @description  Days Since Updated and the Case Status column is required for this script.
 // @include     https://na19.salesforce.com/00U*
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
-// @downloadURL   https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_color_coding.user.js
+// @downloadURL   https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_webex_sched.user.js
 // @copyright  2012+, You
 // ==/UserScript==
 // Reference URL https://landesk.webex.com/LANDesk/m.php?AT=SM&YE=2014&MO=6&DA=1&HO=08&MI=50&MN=ANOTHERTEST
@@ -22,6 +22,23 @@ minute = '&MI=';
 meetName = '&MN=';
 backURL = '$BU=panel.html';
 casenum = $('#evt3').val();
+
+function schedAction(v){    
+    var casenum = $('#evt3').val();
+    var custname = $('#evt2').val();
+//  $('#evt6').val(buildURL('1','1','1','1','1','1'));
+return '$(\'#evt10\').val(\'Meeting\');$(\'#evt5\').val(\'Case '+casenum+' - '+ custname + '\');$(\'#StartDateTime_time\').val(\''+v+'\');ActivityFunction.updateEndTime(\'StartDateTime\',\'StartDateTime_time\', \'EndDateTime\', \'EndDateTime_time\');ActivityFunction.checkDuration(\'IsRecurrence\',\'evt15\',\'StartDateTime\',\'StartDateTime_time\',\'EndDateTime\',\'EndDateTime_time\');';
+}
+
+function createButton(value){
+  return '<input class="btn" type="button" onclick="'+schedAction(value)+'" nAMe="sched' + value + '" id="sched" value="' + value + '" />';
+}
+
+
+$('table.detailList').first().before('<div id="bContainer">'+createButton('9:00 AM')+createButton('10:00 AM')+createButton('11:00 AM')+createButton('2:00 PM')+createButton('3:00 PM')+createButton('4:00 PM')+'</div>');
+$('#bContainer').css('margin-left','auto');
+$('#bContainer').css('margin-right','auto');
+$('#bContainer').css('width','45em');
 
 function buildURL(flag) {
     var y, m, d, h, mi, mn;
