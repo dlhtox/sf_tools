@@ -11,7 +11,9 @@
 // ==/UserScript==
 // Reference URL https://landesk.webex.com/LANDesk/m.php?AT=SM&YE=2014&MO=6&DA=1&HO=08&MI=50&MN=ANOTHERTEST
 
-var baseURL, year, month, day, hour, minute, meetName, casenum, time, day, mEmail, mPhone, mProduct, mPassword;
+$(document).ready(function() {
+  var baseURL, year, month, day, hour, minute, meetName, casenum, time;
+  var mEmail, mPhone, mProduct, mPassword;
 
 baseURL = 'https://landesk.webex.com/landesk/m.php?AT=';
 year = '&YE=';
@@ -30,15 +32,13 @@ function schedAction(v){
 return '$(\'#evt10\').val(\'Meeting\');$(\'#evt5\').val(\'Case '+casenum+' - '+ custname + '\');$(\'#StartDateTime_time\').val(\''+v+'\');ActivityFunction.updateEndTime(\'StartDateTime\',\'StartDateTime_time\', \'EndDateTime\', \'EndDateTime_time\');ActivityFunction.checkDuration(\'IsRecurrence\',\'evt15\',\'StartDateTime\',\'StartDateTime_time\',\'EndDateTime\',\'EndDateTime_time\');';
 }
 
-function createButton(value){
-  return '<input class="btn" type="button" onclick="'+schedAction(value)+'" nAMe="sched' + value + '" id="sched" value="' + value + '" />';
-}
+// function createButton(value){
+  // creates scheduler button
+//   return '<input class="btn" type="button" onclick="'+schedAction(value)+'" nAMe="sched' + value + '" id="sched" value="' + value + '" />';
+// }
 
 
-$('table.detailList').first().before('<div id="bContainer">'+createButton('9:00 AM')+createButton('10:00 AM')+createButton('11:00 AM')+createButton('2:00 PM')+createButton('3:00 PM')+createButton('4:00 PM')+'</div>');
-$('#bContainer').css('margin-left','auto');
-$('#bContainer').css('margin-right','auto');
-$('#bContainer').css('width','45em');
+
 
 function buildURL(flag) {
     var y, m, d, h, mi, mn;
@@ -90,35 +90,41 @@ $("input").filter(function () {    return this.id.match(/sched/);    }).click(fu
     schedAction($(this).val());
 });
 
-self.port.on('meetingkey', function(meetingkey){
-    var date = $('input#StartDateTime').val();
-    time = $('input#StartDateTime_time').val();
+// self.port.on('meetingkey', function(meetingkey){
+//     var date = $('input#StartDateTime').val();
+//     time = $('input#StartDateTime_time').val();
     
-var message  = 'Hello, \n\n'+
-               'Thank you for contacting LANDesk Support, this is an invite for a WebEx session on Case Number: ' +
-               casenum + '. Please join the meeting scheduled on ' + 
-               date + ' at ' + time + ' MST using the following WebEx information:\n' +
-               '\nMeeting Number: '+ meetingkey +
-               '\nMeeting Password: ' + mPassword +
-               '\n\n1. Go to https://landesk.webex.com/ and enter your meeting number.' +
-               '\n2. If requested, enter your name and email address.' +
-               '\n3. If a password is required, enter the meeting password: ' + mPassword +
-               '\n4. Click "Join".' +
-               '\n5. Follow the instructions that appear on your screen.' +
-               '\n\nIf you\'re having issues joining our meeting you can contact me at:\n'; 
-               message = message.replace(/landesk/ig,mProduct) + mEmail + '\n' + mPhone;
+// var message  = 'Hello, \n\n'+
+//                'Thank you for contacting LANDesk Support, this is an invite for a WebEx session on Case Number: ' +
+//                casenum + '. Please join the meeting scheduled on ' + 
+//                date + ' at ' + time + ' MST using the following WebEx information:\n' +
+//                '\nMeeting Number: '+ meetingkey +
+//                '\nMeeting Password: ' + mPassword +
+//                '\n\n1. Go to https://landesk.webex.com/ and enter your meeting number.' +
+//                '\n2. If requested, enter your name and email address.' +
+//                '\n3. If a password is required, enter the meeting password: ' + mPassword +
+//                '\n4. Click "Join".' +
+//                '\n5. Follow the instructions that appear on your screen.' +
+//                '\n\nIf you\'re having issues joining our meeting you can contact me at:\n'; 
+//                message = message.replace(/landesk/ig,mProduct) + mEmail + '\n' + mPhone;
 
-    $('#evt6').val(message);
-});
-self.port.on('mEmail', function(value){
-    mEmail = value;
-});
-self.port.on('mPhone', function(value){
-    mPhone = value;
-});
-self.port.on('mProduct', function(value){
-    mProduct = value;
-});
-self.port.on('mPassword', function(value){
-    mPassword = value;
+//     $('#evt6').val(message);
+// });
+// self.port.on('mEmail', function(value){
+//     mEmail = value;
+// });
+// self.port.on('mPhone', function(value){
+//     mPhone = value;
+// });
+// self.port.on('mProduct', function(value){
+//     mProduct = value;
+// });
+// self.port.on('mPassword', function(value){
+//     mPassword = value;
+// });
+$('table.detailList').first().before('<div id="bContainer">'+createButton('9:00 AM')+createButton('10:00 AM')+createButton('11:00 AM')+createButton('2:00 PM')+createButton('3:00 PM')+createButton('4:00 PM')+'</div>');
+$('#bContainer').css('margin-left','auto');
+$('#bContainer').css('margin-right','auto');
+$('#bContainer').css('width','45em');
+
 });
