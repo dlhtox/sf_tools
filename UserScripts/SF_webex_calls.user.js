@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       SF_webex_calls
 // @namespace  https://github.com/b1kjsh/sf_tools
-// @version    0.10
+// @version    0.11
 // @grant       GM_xmlhttpRequest
 // @description  Days Since Updated and the Case Status column is required for this script.
 // @include     https://na19.salesforce.com/00U*
