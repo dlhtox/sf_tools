@@ -138,4 +138,6 @@ $(document).ready(function() {
     return '<input class="btn.scheduler" type="button" name="mDay" id="mDay' + value + '" value="'+ value +'" />';
   }
   
+  $('#mDayMonday').click(function() {POST(baseURL,buildURL('SM'))});
+
 });

@@ -9,13 +9,12 @@
 // @downloadURL   https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_WebEx_Calls.user.js
 // @copyright  2012+, You
 // ==/UserScript==
-$(document).ready(function() {
-$('#mDayMonday').click(function() {
-    console.log('clicked');
+function POST (url, data) {
+  // body...
     GM_xmlhttpRequest({
       method: "POST",
-      url: baseURL,
-      data: buildURL('SM'),
+      url: url,
+      data: data,
       headers: {
         "Content-Type": "application/x-www-form-urlencoded"
       },
@@ -25,7 +24,5 @@ $('#mDayMonday').click(function() {
         //   location.href = "http://www.example.net/dashboard";
         // }
       }
-    });
-    
   });
-});
+}
