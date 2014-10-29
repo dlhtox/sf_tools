@@ -9,6 +9,7 @@
 // @downloadURL   https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_WebEx_Calls.user.js
 // @copyright  2012+, You
 // ==/UserScript==
+$(document).ready(function() {
 $('#mDayMonday').click(function() {
     console.log('clicked');
     GM_xmlhttpRequest({
@@ -27,3 +28,4 @@ $('#mDayMonday').click(function() {
     });
     
   });
+});

@@ -7,7 +7,7 @@
 // @include     https://na19.salesforce.com/00U*
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
 // @downloadURL   https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_webex_sched.user.js
-// @require       https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_WebEx_Calls.user.js
+// @require       https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_webex_calls.user.js
 // @copyright  2012+, You
 // ==/UserScript==
 
