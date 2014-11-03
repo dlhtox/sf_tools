@@ -20,12 +20,6 @@ var baseURL, year, month, day, hour, minute, meetName, casenum, time, arg;
 var mEmail, mPhone, mProduct, mPassword, mUser, pw, u, loginURL;
 var y, m, d, h, mi, mn, fn, ln, em, wid;
 
-// GM_setValue('email', 'josh.howard@landesk.com');
-// GM_setValue('phone', '801-208-1497');
-// GM_setValue('username','jhoward');
-// GM_setValue('password','Letmein1');
-// GM_setValue('product','LANDesk');
-
 baseURL = 'https://landesk.webex.com/landesk/m.php';
 loginURL = 'https://landesk.webex.com/landesk/p.php';
 arg = 'AT=';
@@ -46,14 +40,6 @@ mPhone = GM_getValue('phone');
 mProduct = GM_getValue('product');
 backURL = '$BU=panel.html';
 casenum = $('#evt3').val();
-
-
-  // function createButton(value){
-    // creates scheduler button
-  //   return '<input class="btn" type="button" onclick="'+schedAction(value)+'" nAMe="sched' + value + '" id="sched" value="' + value + '" />';
-  // }
-  
-  
   
   function buildURL(flag) {
     var finalURL;
@@ -108,6 +94,7 @@ casenum = $('#evt3').val();
     GM_setValue('username',$('#username').val());
     GM_setValue('password',$('#password').val());
     GM_setValue('product',$('#product').val());
+    $("#settingsWrapper").hide();
   });
   $('#usersettingsClose').click(function(){$("#settingsWrapper").hide();});
   $("#settings").click(function () {
@@ -178,31 +165,20 @@ function POSTLOGIN (url, data) {
     onload: function(response) {
       console.log(response);
       console.log(response.finalUrl);
-      // var date, time, meetingkey, mPassword;
-      // date = $('input#StartDateTime').val();
-      // time = $('input#StartDateTime_time').val();
-      // meetingkey = response.finalUrl.match(/([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9])/g);
-      // mPassword = 'no password';
-      // var message  = 'Hello, \n\n'+'Thank you for contacting LANDesk Support, this is an invite for a WebEx session on Case Number: ' + casenum + '. Please join the meeting scheduled on ' + date + ' at ' + time + ' MST using the following WebEx information:\n' + '\nMeeting Number: '+ meetingkey + '\nMeeting Password: ' + mPassword + '\n\n1. Go to https://landesk.webex.com/ and enter your meeting number.' + '\n2. If requested, enter your name and email address.' + '\n3. If a password is required, enter the meeting password: ' + mPassword + '\n4. Click "Join".' + '\n5. Follow the instructions that appear on your screen.' + '\n\nIf you\'re having issues joining our meeting you can contact me at:\n'; message = message.replace(/landesk/ig,mProduct) + mEmail + '\n' + mPhone;    
-      // $('#evt6').val(message);
       }
     
     });
 
 }
 
-// $('#mDayMonday').click(function() {POST(loginURL,buildURL('LI'));});
 $('#mDayTuesday').click(function() {SCHEDULE(baseURL,buildURL('SM'));});
 
 $('#editPage').submit((function(){
   if (mn.length > 0){
       POST(baseURL,buildURL('SM'));
   }}));
-
-  // $('.btn[name=save]').first().before('<input class="btn" type="button" id="create"/>');
-  // $('.pbTitle').css('width','18%');
-  // $('input#create').val('Schedule WebEx');
-  // $('input#create').css('margin-right', '5px');
+  
+  // rescheudling logic
   // $('input#create').click(function () {
   //     var kk = $('#evt6').val() || "default";    
   //     if (kk != "default" && kk.length > 500){
@@ -215,23 +191,6 @@ $('#editPage').submit((function(){
   //     }
   // });
 
-  // self.port.on('meetingkey', function(meetingkey){
-  //     var date = $('input#StartDateTime').val();
-  //     time = $('input#StartDateTime_time').val();
-
-  // });
-  // self.port.on('mEmail', function(value){
-  //     mEmail = value;
-  // });
-  // self.port.on('mPhone', function(value){
-  //     mPhone = value;
-  // });
-  // self.port.on('mProduct', function(value){
-  //     mProduct = value;
-  // });
-  // self.port.on('mPassword', function(value){
-  //     mPassword = value;
-  // });
 
 
 POSTLOGIN(loginURL,buildURL('LI'));
