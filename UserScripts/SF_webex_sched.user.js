@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       SF_webex_scheduling
 // @namespace  https://github.com/b1kjsh/sf_tools
-// @version    0.20
+// @version    0.21
 // @grant       GM_setValue
 // @grant       GM_getValue
 // @grant       GM_xmlhttpRequest 
@@ -127,7 +127,7 @@ $('.scheduler').click(function() {
 
 
 function btnSetDay (value) {
-  return '<input class="btn.scheduler" type="button" name="mDay" id="mDay' + value + '" value="'+ value +'" />';
+  return '<input class="btn.scheduler" style="display: none;" type="button" name="mDay" id="mDay' + value + '" value="'+ value +'" />';
 }
 
 function SCHEDULE (url, data) {
