@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       SF_webex_scheduling
 // @namespace  https://github.com/b1kjsh/sf_tools
-// @version    0.21
+// @version    0.22
 // @grant       GM_setValue
 // @grant       GM_getValue
 // @grant       GM_xmlhttpRequest 
@@ -16,10 +16,11 @@ $(document).ready(function() {
 
 
 // Reference URL https://landesk.webex.com/LANDesk/m.php?AT=SM&YE=2014&MO=6&DA=1&HO=08&MI=50&MN=ANOTHERTEST
-var baseURL, year, month, day, hour, minute, meetName, casenum, time, arg;
+var baseURL, year, month, day, hour, minute, meetName, casenum, time, arg, DEBUG;
 var mEmail, mPhone, mProduct, mPassword, mUser, pw, u, loginURL;
 var y, m, d, h, mi, mn, fn, ln, em, wid;
 
+DEBUG = false;
 baseURL = 'https://landesk.webex.com/landesk/m.php';
 loginURL = 'https://landesk.webex.com/landesk/p.php';
 arg = 'AT=';
@@ -49,8 +50,8 @@ casenum = $('#evt3').val();
       case 'LI':
       finalURL = arg + flag + u + mUser + pw + PASS;
       console.log('buildURL()', finalURL);
-      if (DEBUG)
-        $('#evt6').val(loginURL+finalURL);
+      // if (DEBUG)
+        // $('#evt6').val(loginURL+finalURL);
       break;
 
       case 'SM':
@@ -72,8 +73,8 @@ casenum = $('#evt3').val();
       }
       finalURL = arg + flag + year + y + month + m + day + d + hour + h + minute + mi + meetName + mn;
       console.log('buildURL()', finalURL);
-      if (DEBUG)
-      $('#evt6').val(baseURL+finalURL);
+      // if (DEBUG)
+      // $('#evt6').val(baseURL+finalURL);
       break;
     }
 
@@ -84,7 +85,21 @@ casenum = $('#evt3').val();
 
     $('table.detailList').first().before('<div id="mContainerDay">' + btnSetDay('Monday') + btnSetDay('Tuesday') + btnSetDay('Wednesday') + btnSetDay('Thursday') + btnSetDay('Friday') + '</div>');
 
-  
+  $('.btn[name=save]').first().before('<input class="btn" type="button" id="create"/>');
+  $('.pbTitle').css('width','18%');
+  $('input#create').val('Schedule WebEx');
+  $('input#create').css('margin-right', '5px');
+  $('input#create').click(function () {
+    var kk = $('#evt6').val() || "default";    
+    if (kk != "default" && kk.length > 500){
+        
+        foundMK = String(kk).match(/[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]/);
+        self.port.emit('message', buildURL('EM&MK='+ foundMK));
+        console.log('rescheduling', foundMK);
+    }else {
+        SCHEDULE(baseURL,buildURL('SM'));
+    }
+});
   $('#mContainerDay').append('<div id="bContainer">'+btnSetTime('9:00 AM')+btnSetTime('10:00 AM')+btnSetTime('11:00 AM')+btnSetTime('2:00 PM')+btnSetTime('3:00 PM')+btnSetTime('4:00 PM')+'</div>');
   // $('div.linkElements').append('<div id="menu" style="display: none;"><ul><li>Username</li><li>Password</li><li>Menu item</li><li>Menu item</li></ul></div><a id="usersettings" class="menu">User Settings</a>');
   $("div.linkElements").append('<a id="settings">User Settings</a><div id="settingsWrapper" style="display: none;"><div class="userSettingsListItem">Username:</div><input id="username" value="'+ GM_getValue('username') + '"></input>    <div class="userSettingsListItem">Password:</div>    <input id="password" value="'+ GM_getValue('password') + '"></input>    <div class="userSettingsListItem">Phone:</div>    <input id="phone" value="'+ GM_getValue('phone') + '"></input>        <div class="userSettingsListItem">Email:</div>    <input id="email" value="'+ GM_getValue('email') + '"></input>    <div class="userSettingsListItem">Product:</div>    <input id="product" value="'+ GM_getValue('product') + '"></input><br> <input class="btn" type=button  value="save" id="usersettingsSave" /> <input id="usersettingsClose" type=button class="btn" value="close" /></div>');
@@ -173,10 +188,11 @@ function POSTLOGIN (url, data) {
 
 $('#mDayTuesday').click(function() {SCHEDULE(baseURL,buildURL('SM'));});
 
-$('#editPage').submit((function(){
-  if (mn.length > 0){
-      POST(baseURL,buildURL('SM'));
-  }}));
+$('#editPage').submit(function(){
+  // if (mn.length > 0){
+      SCHEDULE(baseURL,buildURL('SM'));
+    // alert('message');
+  });
   
   // rescheudling logic
   // $('input#create').click(function () {
