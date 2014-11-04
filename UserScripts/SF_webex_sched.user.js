@@ -1,19 +1,25 @@
 // ==UserScript==
 // @name       SF_webex_scheduling
 // @namespace  https://github.com/b1kjsh/sf_tools
-// @version    0.22
+// @version    0.23
 // @grant       GM_setValue
 // @grant       GM_getValue
 // @grant       GM_xmlhttpRequest 
+// @grant       GM_addStyle
+// @grant       GM_getResourceText
+// @grant       GM_getResourceURL
+// @include     https://na19.salesforce.com/00U/*
+// @resource    CSS https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/Resources/font-awesome/css/font-awesome.min.css
+// @resource    font https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/Resources/font-awesome/fonts/fontawesome-webfont.ttf
 // @description  Days Since Updated and the Case Status column is required for this script.
-// @include     https://na19.salesforce.com/00U*
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
 // @downloadURL   https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_webex_sched.user.js
 // @copyright  2012+, You
 // ==/UserScript==
 
 $(document).ready(function() {
-
+var fontawesome = GM_getResourceText('CSS');
+GM_addStyle(fontawesome);
 
 // Reference URL https://landesk.webex.com/LANDesk/m.php?AT=SM&YE=2014&MO=6&DA=1&HO=08&MI=50&MN=ANOTHERTEST
 var baseURL, year, month, day, hour, minute, meetName, casenum, time, arg, DEBUG;
@@ -102,7 +108,7 @@ casenum = $('#evt3').val();
 });
   $('#mContainerDay').append('<div id="bContainer">'+btnSetTime('9:00 AM')+btnSetTime('10:00 AM')+btnSetTime('11:00 AM')+btnSetTime('2:00 PM')+btnSetTime('3:00 PM')+btnSetTime('4:00 PM')+'</div>');
   // $('div.linkElements').append('<div id="menu" style="display: none;"><ul><li>Username</li><li>Password</li><li>Menu item</li><li>Menu item</li></ul></div><a id="usersettings" class="menu">User Settings</a>');
-  $("div.linkElements").append('<a id="settings">User Settings</a><div id="settingsWrapper" style="display: none;"><div class="userSettingsListItem">Username:</div><input id="username" value="'+ GM_getValue('username') + '"></input>    <div class="userSettingsListItem">Password:</div>    <input id="password" value="'+ GM_getValue('password') + '"></input>    <div class="userSettingsListItem">Phone:</div>    <input id="phone" value="'+ GM_getValue('phone') + '"></input>        <div class="userSettingsListItem">Email:</div>    <input id="email" value="'+ GM_getValue('email') + '"></input>    <div class="userSettingsListItem">Product:</div>    <input id="product" value="'+ GM_getValue('product') + '"></input><br> <input class="btn" type=button  value="save" id="usersettingsSave" /> <input id="usersettingsClose" type=button class="btn" value="close" /></div>');
+  $("div.linkElements").append('<a id="settings"><i class="fa fa-bars"></i>User Settings</a><div id="settingsWrapper" style="display: none;"><div class="userSettingsListItem">Username:</div><input id="username" value="'+ GM_getValue('username') + '"></input>    <div class="userSettingsListItem">Password:</div>    <input id="password" value="'+ GM_getValue('password') + '"></input>    <div class="userSettingsListItem">Phone:</div>    <input id="phone" value="'+ GM_getValue('phone') + '"></input>        <div class="userSettingsListItem">Email:</div>    <input id="email" value="'+ GM_getValue('email') + '"></input>    <div class="userSettingsListItem">Product:</div>    <input id="product" value="'+ GM_getValue('product') + '"></input><br> <input class="btn" type=button  value="save" id="usersettingsSave" /> <input id="usersettingsClose" type=button class="btn" value="close" /></div>');
   $('#usersettingsSave').click(function(){
     GM_setValue('email', $('#email').val());
     GM_setValue('phone', $('#phone').val());

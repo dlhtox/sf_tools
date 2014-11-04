@@ -6,6 +6,7 @@
 // @description  Days Since Updated and the Case Status column is required for this script.
 // @include     https://na19.salesforce.com/500?*
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
+// @resource    https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css
 // @downloadURL   https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_color_coding.user.js
 // @copyright  2012+, You
 // ==/UserScript==
@@ -13,6 +14,8 @@ var debug = false;
 console.log("---"+GM_info.script.name+" loaded in window version "+GM_info.script.version+"---");
 
 $(document).ready(function () {
+    // $('.x-grid3-col-ACTION_COLUMN').
+
     var mArray = [];
     function getCases() {
         var selector = $(".x-grid3-td-CASES_CASE_NUMBER");
