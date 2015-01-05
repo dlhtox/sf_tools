@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       SF_color_coding
 // @namespace  https://github.com/b1kjsh/sf_tools
-// @version    0.45
+// @version    0.46
 // @grant       none
 // @description  Days Since Updated and the Case Status column is required for this script.
 // @include     https://na19.salesforce.com/500?*
@@ -15,7 +15,6 @@ console.log("---"+GM_info.script.name+" loaded in window version "+GM_info.scrip
 
 $(document).ready(function () {
     // $('.x-grid3-col-ACTION_COLUMN').
-
     var mArray = [];
     function getCases() {
         var selector = $(".x-grid3-td-CASES_CASE_NUMBER");
@@ -35,30 +34,36 @@ $(document).ready(function () {
 
     function colorAged() {
         console.log('colorAged()','---Checking Case Age---');
-        if ($('.x-grid3-col-00N30000004r0fd').length){
-            $('.x-grid3-col-00N30000004r0fd').each(function() {
+       // doesn't work
+        // if(/_listSelect/.contains(/Open Cases/)){
+        if ($('.x-grid3-col-00N30000004r0gj').length){
+            // console.log('x-grid3-col-00N30000004r0gj', $('.x-grid3-col-00N30000004r0gj').length);
+            $('.x-grid3-col-00N30000004r0gj').each(function() {
                             // console.log($(this).html());
-                            if ($(this).html() == 1 && $(this).parent("td").parent("tr").find('.x-grid3-col-CASES_STATUS:contains("Waiting")').length > 0){
+                            if (parseFloat($(this).html()) == parseFloat(1) && $(this).parent("td").parent("tr").find('.x-grid3-col-CASES_STATUS:contains("Waiting")').length > 0){
                                 $(this).parent("td").parent("tr").parent("tbody").css('background', '#EBC299');
                             }
-                            if ($(this).html() > 1){
+                            if (parseFloat($(this).html()) > parseFloat (1.00) ){
                                 $(this).parent("td").parent("tr").parent("tbody").css('background', '#FFCC66');
                             }
-                            if ($(this).html() > 2 ) {
+                            if (parseFloat($(this).html()) > parseFloat(2.00) ) {
                                 $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF9933');
                             }
-                            if ($(this).html() > 3 ) {
+                            if (parseFloat($(this).html()) > parseFloat(3.00) ) {
                                 $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF3300');
                             }            
                         });    
         } else {
-            alert('Missing "Days Since Last Modified" column from case view');
+            alert('Missing "Time Since Last Updated" column from case view');
         }
+    // }
         checkPRT();
     }
 
     function checkPRT() {
         console.log('checkPRT()','---Checking Case PRT---');
+        // doesn't work
+        // if($('#00B13000009tzTL_listSelect').is(/Open Cases/)){
         if ($('.x-grid3-col-00N30000004r0gN').length){
             $('.x-grid3-col-00N30000004r0gN').each(function() {
 
@@ -99,11 +104,11 @@ $(document).ready(function () {
                         });
                     }
                 });
-} else {
-    alert('Missing "PRT Target" column from case view');
-}
-
-}
+            } else {
+                alert('Missing "PRT Target" column from case view');
+            }
+        // }
+    }
 
 
 function color() {
@@ -120,11 +125,11 @@ function color() {
     setTimeout(function() {
         if (window.location.href.indexOf("https://na19.salesforce.com/500") > -1 ) {
                 if ($('.x-grid3-row-table').length){
-                        color();
-                        colorAged();}
-                    } else {
-                        setTimeout();
-                    }
+                    color();
+                    colorAged();}
+                } else {
+                    setTimeout();
+                }
         }, 500);
 
     // $(window).resize(function() {
@@ -135,56 +140,56 @@ function color() {
     //         }, 1000);        
     //     }
     // });
-    $(window).resize(function() {
-        setTimeout(function() {
+$(window).resize(function() {
+    setTimeout(function() {
         if (window.location.href.indexOf("https://na19.salesforce.com/500") > -1 ) {
-                if ($('.x-grid3-row-table').length){
-                        color();
-                        colorAged();}
-                    } else {
-                        setTimeout();
-                    }
+            if ($('.x-grid3-row-table').length){
+                color();
+                colorAged();}
+            } else {
+                setTimeout();
+            }
         }, 500);});
 
-    if (debug) {console.log(mArray.toString(),n);}
+if (debug) {console.log(mArray.toString(),n);}
 
-    var open = window.XMLHttpRequest.prototype.open,
-    send = window.XMLHttpRequest.prototype.send,
-    onReadyStateChange;
+var open = window.XMLHttpRequest.prototype.open,
+send = window.XMLHttpRequest.prototype.send,
+onReadyStateChange;
 
-    function openReplacement(method, url, async, user, password) {
-        var syncMode = async !== false ? 'async' : 'sync';
-        console.warn('Preparing ' + syncMode + ' HTTP request : ' + method + ' ' + url);
-        if (/ListServlet/.test(url)){
-            if (debug) {console.log('openReplacement()','Case Refresh Detected! Attempting to color found objects!');}
-            setTimeout(function () {
-                 color();
-                 colorAged();
-                 getCases();
-         }, 500);
-        }
-        return open.apply(this, arguments);
+function openReplacement(method, url, async, user, password) {
+    var syncMode = async !== false ? 'async' : 'sync';
+    console.warn('Preparing ' + syncMode + ' HTTP request : ' + method + ' ' + url);
+    if (/ListServlet/.test(url)){
+        if (debug) {console.log('openReplacement()','Case Refresh Detected! Attempting to color found objects!');}
+        setTimeout(function () {
+           color();
+           colorAged();
+           getCases();
+       }, 500);
     }
+    return open.apply(this, arguments);
+}
 
-    function sendReplacement(data) {
-        console.warn('Sending HTTP request data : ', data);
+function sendReplacement(data) {
+    console.warn('Sending HTTP request data : ', data);
 
-        if (this.onreadystatechange) {
-            this._onreadystatechange = this.onreadystatechange;
-        }
-        this.onreadystatechange = onReadyStateChangeReplacement;
-
-        return send.apply(this, arguments);
+    if (this.onreadystatechange) {
+        this._onreadystatechange = this.onreadystatechange;
     }
+    this.onreadystatechange = onReadyStateChangeReplacement;
 
-    function onReadyStateChangeReplacement() {
-        console.warn('HTTP request ready state changed : ' + this.readyState);
-        if (this._onreadystatechange) {
-            return this._onreadystatechange.apply(this, arguments);
-        }
+    return send.apply(this, arguments);
+}
+
+function onReadyStateChangeReplacement() {
+    console.warn('HTTP request ready state changed : ' + this.readyState);
+    if (this._onreadystatechange) {
+        return this._onreadystatechange.apply(this, arguments);
     }
+}
 
-    window.XMLHttpRequest.prototype.open = openReplacement;
-    window.XMLHttpRequest.prototype.send = sendReplacement;
+window.XMLHttpRequest.prototype.open = openReplacement;
+window.XMLHttpRequest.prototype.send = sendReplacement;
 
 });
