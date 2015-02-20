@@ -34,9 +34,8 @@ $(document).ready(function () {
 
     function colorAged() {
         console.log('colorAged()','---Checking Case Age---');
-       // doesn't work
-        // if(/_listSelect/.contains(/Open Cases/)){
-        if ($('.x-grid3-col-00N30000004r0gj').length){
+        if(/Open Cases/.test($('select.title option:selected').html())){
+            if ($('.x-grid3-col-00N30000004r0gj').length){
             // console.log('x-grid3-col-00N30000004r0gj', $('.x-grid3-col-00N30000004r0gj').length);
             $('.x-grid3-col-00N30000004r0gj').each(function() {
                             // console.log($(this).html());
@@ -53,19 +52,65 @@ $(document).ready(function () {
                                 $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF3300');
                             }            
                         });    
-        } else {
-            alert('Missing "Time Since Last Updated" column from case view');
-        }
-    // }
-        checkPRT();
-    }
+} else {
+    alert('Missing "Time Since Last Updated" column from case view');
+}
+console.log('select.title does not contain "Open Cases"');
+}
+checkPRT();
+}
 
-    function checkPRT() {
-        console.log('checkPRT()','---Checking Case PRT---');
-        // doesn't work
-        // if($('#00B13000009tzTL_listSelect').is(/Open Cases/)){
+function checkPRT() {
+    console.log('checkPRT()','---Checking Case PRT---');
+    // if($('select.title').match(/Open Cases/)){
+    if(/Open Cases/.test($('select.title option:selected').html())){
         if ($('.x-grid3-col-00N30000004r0gN').length){
             $('.x-grid3-col-00N30000004r0gN').each(function() {
+
+                var parent = $(this).parent("td").parent("tr").find('td');
+                var mdate = new Date();
+                var cdate = new Date($(this).html());
+                if (debug) {console.log(cdate.toDateString());}
+                var diffDate = cdate - mdate;
+                var hourDiff = Math.floor(diffDate / 1000 / 60 / 60);
+                   if (debug) {console.log(diffDate, hourDiff);}
+                if ( hourDiff <= 24 && hourDiff > 12 ){
+                        if (debug) {console.log(diffDate, hourDiff);}
+
+                    }
+                    if ( hourDiff <= 12 && hourDiff > 8 ){
+                        // if (debug) {console.log(diffDate, hourDiff);}
+                        if (debug) {console.log(hourDiff,"Yellow Case: " + casess);}
+                        parent.find('div').css('font', 'italic 12px/18px Arial, Helvetica, sans-serif');
+                        // $(this).parent("td").parent("tr").parent("tbody").css('background', '#EBC299');
+                    }
+                    if ( hourDiff <= 8 && hourDiff > 6 ){
+                        // if (debug) {console.log(diffDate, hourDiff);}
+                        if (debug) {console.log(hourDiff,"Orange Case: " + casess);}
+                        parent.find('.x-grid3-col-CASES_CASE_NUMBER').each(function() {
+                            parent.find('div').css('font', 'bold 12px/18px Arial, Helvetica, sans-serif');
+                            $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF9933');
+                        });
+
+                    }
+                    if ( hourDiff <= 6 && hourDiff > 3 ){
+                        // if (debug) {console.log(diffDate, hourDiff);}
+                    }
+                    if ( hourDiff <= 3 ){
+                        var casess = $(this).parent("td").parent("tr").find('.x-grid3-col-CASES_CASE_NUMBER').find('a').html();
+                        if (debug) {console.log(hourDiff,"Red Case: " + casess);}
+                        parent.find('.x-grid3-col-CASES_CASE_NUMBER').each(function() {
+                            parent.find('div').css('font', 'italic bold 12px/18px Arial, Helvetica, sans-serif');
+                            $(this).parent("td").parent("tr").parent("tbody").css('background', '#FF3300');
+                        });
+                    }
+                });
+    } else {
+        alert('Missing "PRT Target" column from case view');
+
+    }
+    console.log('select.title does not contain "Open Cases"');
+    $('.x-grid3-col-00N1300000BQsmE').each(function() {
 
                 var parent = $(this).parent("td").parent("tr").find('td');
                 var mdate = new Date();
@@ -104,32 +149,43 @@ $(document).ready(function () {
                         });
                     }
                 });
-            } else {
-                alert('Missing "PRT Target" column from case view');
-            }
-        // }
     }
+}
 
 
 function color() {
     console.log('color()','---Checking Case Status---');
-    $(".x-grid3-row-table").find(("div:contains('Open: Not Reviewed')")).parent("td").parent("tr").parent("tbody").css('background', '#ffaf9b');
-    $(".x-grid3-row-table").find(("div:contains('Open: Under Review')")).parent("td").parent("tr").parent("tbody").css('background', '#9beeff');
-    $(".x-grid3-row-table").find(("div:contains('Open: Escalated to')")).parent("td").parent("tr").parent("tbody").css('background', '#f1ff9b');
-    $(".x-grid3-row-table").find(("div:contains('Open: Waiting on Customer')")).parent("td").parent("tr").parent("tbody").css('background', '#9bffc8');
-    $(".x-grid3-row-table").find(("div:contains('Open: Patch Delivered')")).parent("td").parent("tr").parent("tbody").css('background', '#CC6600');
-        // $('.x-grid3-col-00N30000004r0fO').css('visibility','hidden');
+    if(/Open Cases/.test($('select.title option:selected').html())){
+                $(".x-grid3-row-table").find(("div:contains('Open: Not Reviewed')")).parent("td").parent("tr").parent("tbody").css('background', '#ffaf9b');
+                $(".x-grid3-row-table").find(("div:contains('Open: Under Review')")).parent("td").parent("tr").parent("tbody").css('background', '#9beeff');
+                $(".x-grid3-row-table").find(("div:contains('Open: Escalated to')")).parent("td").parent("tr").parent("tbody").css('background', '#f1ff9b');
+                $(".x-grid3-row-table").find(("div:contains('Open: Waiting on Customer')")).parent("td").parent("tr").parent("tbody").css('background', '#9bffc8');
+                $(".x-grid3-row-table").find(("div:contains('Open: Patch Delivered')")).parent("td").parent("tr").parent("tbody").css('background', '#CC6600');
+            // $('.x-grid3-col-00N30000004r0fO').css('visibility','hidden');
+
+        } else {
+            console.log('select.title does not contain "Open Cases"');
+            // x-grid3-col-00N30000004r0fn
+                $(".x-grid3-row-table").find(("div:contains('Escalated')")).parent("td").parent("tr").parent("tbody").css('background', '#9beeff');
+                $(".x-grid3-row-table").find(("div:contains('Escalated to Engineering')")).parent("td").parent("tr").parent("tbody").css('background', '#f1ff9b');
+                // $(".x-grid3-row-table").find(("div:contains('Escalated to')")).parent("td").parent("tr").parent("tbody").css('background', '#f1ff9b');
+                // $(".x-grid3-row-table").find(("div:contains('Waiting on Customer')")).parent("td").parent("tr").parent("tbody").css('background', '#9bffc8');
+                // $(".x-grid3-row-table").find(("div:contains('Patch Delivered')")).parent("td").parent("tr").parent("tbody").css('background', '#CC6600');
+        }
+
         
     }
+
+
     
     setTimeout(function() {
         if (window.location.href.indexOf("https://na19.salesforce.com/500") > -1 ) {
-                if ($('.x-grid3-row-table').length){
-                    color();
-                    colorAged();}
-                } else {
-                    setTimeout();
-                }
+            if ($('.x-grid3-row-table').length){
+                color();
+                colorAged();}
+            } else {
+                setTimeout();
+            }
         }, 500);
 
     // $(window).resize(function() {
