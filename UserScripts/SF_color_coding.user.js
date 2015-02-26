@@ -8,6 +8,7 @@
 // @include     https://na19.salesforce.com/500?*
 // @require     https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js
 // @resource    jh_CSS https://raw.githubusercontent.com/b1kjsh/sf_tools/master/UserScripts/Resources/css/mycss.css
+// @resource    jh_CSS_layout https://raw.githubusercontent.com/b1kjsh/sf_tools/master/UserScripts/Resources/css/layout.css
 // @downloadURL   https://github.com/b1kjsh/sf_tools/raw/master/UserScripts/SF_color_coding.user.js
 // @copyright  2012+, You
 // ==/UserScript==
@@ -18,7 +19,9 @@ $(document).ready(function () {
     // $('.x-grid3-col-ACTION_COLUMN').
     var mArray = [];
     var jh_CSS = GM_getResourceText("jh_CSS");
+    var jh_CSS_layout = GM_getResourceText("jh_CSS_layout");
     GM_addStyle (jh_CSS);
+    GM_addStyle (jh_CSS_layout);
     function getCases() {
         var selector = $(".x-grid3-td-CASES_CASE_NUMBER");
         // selector.css('background','#000000');
