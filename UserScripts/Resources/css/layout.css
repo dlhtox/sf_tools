@@ -45,15 +45,6 @@ select.title {
     text-transform: uppercase;
 }
 
-.x-grid3-hd-checkbox {
-    display: none;
-}
-input.checkbox {
-    display: none;
-}
-.x-grid3-cell-first {
-    display: none;
-}
-.x-grid3-td-checkbox {
+.x-grid3-hd-checkbox input.checkbox .x-grid3-cell-first .x-grid3-td-checkbox {
     display: none;
 }

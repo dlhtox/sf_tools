@@ -15,6 +15,9 @@
 var debug = false;
 console.log("---"+GM_info.script.name+" loaded in window version "+GM_info.script.version+"---");
 
+// TODO: add logo somewhere https://c.na19.content.force.com/servlet/servlet.FileDownload?file=01513000002lPva
+// TODO: move the search bar
+
 $(document).ready(function () {
     // $('.x-grid3-col-ACTION_COLUMN').
     var mArray = [];
