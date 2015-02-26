@@ -23,7 +23,7 @@ td.sidebarCell {
 }
 
 #presence_widget {
-    display: none;    
+display: none;    
 }
 
 #AppBodyHeader table {
@@ -45,6 +45,6 @@ select.title {
     text-transform: uppercase;
 }
 
-.x-grid3-hd-checkbox input.checkbox .x-grid3-cell-first .x-grid3-td-checkbox {
+.x-grid3-hd-checkbox, input.checkbox, .x-grid3-cell-first, .x-grid3-td-checkbox, .chatterFollowUnfollowAction {
     display: none;
 }

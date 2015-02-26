@@ -25,6 +25,8 @@ $(document).ready(function () {
     var jh_CSS_layout = GM_getResourceText("jh_CSS_layout");
     GM_addStyle (jh_CSS);
     GM_addStyle (jh_CSS_layout);
+
+
     function getCases() {
         var selector = $(".x-grid3-td-CASES_CASE_NUMBER");
         // selector.css('background','#000000');
@@ -175,6 +177,8 @@ function checkPRT() {
 
 function color() {
     console.log('color()','---Checking Case Status---');
+    var replace_pipe = $('.x-grid3-col-ACTION_COLUMN').html().replace(/\|/, '');
+    $('.x-grid3-col-ACTION_COLUMN').html(replace_pipe);
     if(/Open Cases/.test($('select.title option:selected').html())){
         $(".x-grid3-row-table").find(("div:contains('Open: Not Reviewed')")).parent("td").parent("tr").parent("tbody").toggleClass('jh-tse-nr');
         $(".x-grid3-row-table").find(("div:contains('Open: Under Review')")).parent("td").parent("tr").parent("tbody").toggleClass('jh-tse-ur');
