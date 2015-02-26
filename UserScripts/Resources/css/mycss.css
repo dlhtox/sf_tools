@@ -1,0 +1,63 @@
+/*PSE colors*/
+
+.jh-pse-escalated {
+	background-color: #ffaf9b;
+}
+
+.jh-pse-waiting {
+	background-color: #9bffc8;
+}
+
+.jh-pse-esc-eng {
+	background-color: #f1ff9b;
+}
+
+/*TSE colors*/
+
+.jh-tse-nr {
+	background-color: #ffaf9b;
+}
+
+.jh-tse-ur {
+	background-color: #9beeff;
+}
+
+.jh-tse-esc-pse {
+	background-color: #f1ff9b;
+}
+
+.jh-tse-esc-eng {
+	background-color: #f1ff9b;
+}
+
+.jh-tse-waiting-cust {
+	background-color: #9bffc8;
+}
+
+.jh-tse-patch-delivered {
+	background-color: #CC6600;	
+}
+
+/*PRT Colors*/
+
+.jh-prt-low {
+	background-color: #EBC299;
+}
+
+.jh-prt-med {
+	background-color: #FFCC66;
+	font: 'italic 12px/18px Arial, Helvetica, sans-serif';
+	/*parent.find('div').css('font', 'italic 12px/18px Arial, Helvetica, sans-serif');*/
+}
+
+.jh-prt-high {
+	background-color: #FF9933;
+	font: 'bold 12px/18px Arial, Helvetica, sans-serif';
+	/*parent.find('div').css('font', 'bold 12px/18px Arial, Helvetica, sans-serif');*/
+}
+
+.jh-prt-urgent {
+	background-color: #FF3300;
+	font: 'italic bold 12px/18px Arial, Helvetica, sans-serif';
+	/*parent.find('div').css('font', 'italic bold 12px/18px Arial, Helvetica, sans-serif');*/
+}
