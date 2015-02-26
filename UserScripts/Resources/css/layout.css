@@ -22,6 +22,10 @@ td.sidebarCell {
     display: none;
 }
 
+#presence_widget {
+    display: none;    
+}
+
 #AppBodyHeader table {
     display: none;
 }

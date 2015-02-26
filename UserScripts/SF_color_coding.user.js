@@ -164,10 +164,7 @@ function checkPRT() {
                         });
                     }
                 });
-            } else {
-                alert('Missing "PRT Target" column from case view');
-
-            }
+            } 
 }
 
 }
