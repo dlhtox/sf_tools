@@ -206,7 +206,9 @@ function color() {
 
         $('.linkBar').toggleClass('jh-border');
         $('.chatterFollowUnfollowAction').addClass('jh-hidden');
-
+        $('.x-grid3-hd-row').addClass('jh-background');
+        $('.linkBar').addClass('jh-background');
+        $('.bottomNav').addClass('jh-background');
         setTimeout(function() {
             if (window.location.href.indexOf("https://na19.salesforce.com/500") > -1 ) {
                 if ($('.x-grid3-row-table').length){

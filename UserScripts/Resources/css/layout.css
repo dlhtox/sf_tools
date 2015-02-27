@@ -49,6 +49,9 @@ select.title {
     display: none;
 }
 
+.jh-background {
+    background-color:#e8e8e8;
+}
 .x-grid3-hd-row, .linkBar, .bottomNav {
     background-color:#e8e8e8;
 }
