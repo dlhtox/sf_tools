@@ -115,3 +115,7 @@ div.listButtons input {
 body.sfdcBody {
     background: #385165 !important;
 }
+
+.x-grid3-header-inner {
+    width: auto !important;
+}
