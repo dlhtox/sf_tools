@@ -1,11 +1,18 @@
+/*Global Colors*/
+
+.jh-border {
+	border-color: #555559;
+	background-color: #555559;
+}
+
 /*PSE colors*/
 
 .jh-pse-escalated {
-	background-color: #ffaf9b;
+	background-color: #d7ccc8;
 }
 
 .jh-pse-waiting {
-	background-color: #9bffc8;
+	background-color: #98c93c;
 }
 
 .jh-pse-esc-eng {
@@ -15,7 +22,7 @@
 /*TSE colors*/
 
 .jh-tse-nr {
-	background-color: #ffaf9b;
+	background-color: #d7ccc8;
 }
 
 .jh-tse-ur {
@@ -31,7 +38,7 @@
 }
 
 .jh-tse-waiting-cust {
-	background-color: #9bffc8;
+	background-color: #98c93c;
 }
 
 .jh-tse-patch-delivered {
@@ -57,7 +64,8 @@
 }
 
 .jh-prt-urgent {
-	background-color: #FF3300;
+	background-color: #b42025;
 	font: 'italic bold 12px/18px Arial, Helvetica, sans-serif';
 	/*parent.find('div').css('font', 'italic bold 12px/18px Arial, Helvetica, sans-serif');*/
 }
+

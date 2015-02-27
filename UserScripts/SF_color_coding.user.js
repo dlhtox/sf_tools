@@ -204,7 +204,7 @@ function color() {
 
         }
 
-
+        $('.linkBar').toggleClass('.jh-border');
 
         setTimeout(function() {
             if (window.location.href.indexOf("https://na19.salesforce.com/500") > -1 ) {
