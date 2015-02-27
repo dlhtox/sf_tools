@@ -48,3 +48,35 @@ select.title {
 .x-grid3-hd-checkbox, input.checkbox, .x-grid3-cell-first, .x-grid3-td-checkbox, .chatterFollowUnfollowAction {
     display: none;
 }
+
+.x-grid3-hd-row, .linkBar, .bottomNav {
+    background-color:#e8e8e8;
+}
+
+.jh-hidden {
+    display: none;
+}
+
+nav {
+    background-color: #2e5e86;
+}
+
+.zen-active, .zen-active a {
+    color: #2e5e86;
+    background-color: #e2e6e7;
+    border-color: #e2e6e7;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    box-shadow: none;
+}
+
+.brandPrimaryBrd {
+    border-color: #e2e6e7;
+}
+
+#bodyCell {
+    background-color: #e8e8e8;
+}
+.x-grid3-row {
+    border: none;
+}

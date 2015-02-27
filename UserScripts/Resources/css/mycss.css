@@ -3,69 +3,91 @@
 .jh-border {
 	border-color: #555559;
 	background-color: #555559;
+	background-image: null;
 }
 
 /*PSE colors*/
 
 .jh-pse-escalated {
 	background-color: #d7ccc8;
+	border-color: #d7ccc8;
+
 }
 
 .jh-pse-waiting {
 	background-color: #98c93c;
+	border-color: #98c93c;
 }
 
 .jh-pse-esc-eng {
 	background-color: #f1ff9b;
+	border-color: #f1ff9b;
 }
 
 /*TSE colors*/
 
 .jh-tse-nr {
 	background-color: #d7ccc8;
+	border-color: #d7ccc8;
 }
 
 .jh-tse-ur {
 	background-color: #9beeff;
+	border-color: #9beeff;
 }
 
 .jh-tse-esc-pse {
 	background-color: #f1ff9b;
+	border-color: #f1ff9b;
 }
 
 .jh-tse-esc-eng {
 	background-color: #f1ff9b;
+	border-color: #f1ff9b;
 }
 
 .jh-tse-waiting-cust {
 	background-color: #98c93c;
+	border-color: #98c93c;
 }
 
 .jh-tse-patch-delivered {
 	background-color: #CC6600;	
+	border-color: #CC6600;	
 }
 
 /*PRT Colors*/
 
 .jh-prt-low {
 	background-color: #EBC299;
+	border-color: #EBC299;
 }
 
 .jh-prt-med {
 	background-color: #FFCC66;
+	border-color: #FFCC66;
 	font: 'italic 12px/18px Arial, Helvetica, sans-serif';
 	/*parent.find('div').css('font', 'italic 12px/18px Arial, Helvetica, sans-serif');*/
 }
 
 .jh-prt-high {
 	background-color: #FF9933;
+	border-color: #FF9933;
 	font: 'bold 12px/18px Arial, Helvetica, sans-serif';
 	/*parent.find('div').css('font', 'bold 12px/18px Arial, Helvetica, sans-serif');*/
 }
 
-.jh-prt-urgent {
-	background-color: #b42025;
-	font: 'italic bold 12px/18px Arial, Helvetica, sans-serif';
-	/*parent.find('div').css('font', 'italic bold 12px/18px Arial, Helvetica, sans-serif');*/
+.jh-prt-urgent, .jh-prt-urgent div, .jh-prt-urgent a {
+    background-color: #ff0000;
+    border-color: #ff0000;
+    font: 'italic bold 12px/18px Arial, Helvetica, sans-serif';
+    font-weight: heavy;
+    color: #ffffff;
+    font-weight: bold;
+    font-style: italic;    
+}
+
+.jh-hidden {
+	display: none;
 }
 

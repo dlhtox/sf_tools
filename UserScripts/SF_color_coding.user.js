@@ -204,7 +204,8 @@ function color() {
 
         }
 
-        $('.linkBar').toggleClass('.jh-border');
+        $('.linkBar').toggleClass('jh-border');
+        $('.chatterFollowUnfollowAction').addClass('jh-hidden');
 
         setTimeout(function() {
             if (window.location.href.indexOf("https://na19.salesforce.com/500") > -1 ) {
