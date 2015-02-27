@@ -117,5 +117,5 @@ body.sfdcBody {
 }
 
 .x-grid3-header-inner {
-    width: 1870px;
-}
+    width: 1870px   !important;
+} 
