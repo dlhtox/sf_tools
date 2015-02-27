@@ -61,8 +61,6 @@ select.title {
     display: none   !important;
 }
 
-
-
 .zen-active, .zen-active a, .jh-active, .jh-active a {
     color: #2e5e86  !important;
     background-color: #e2e6e7   !important;
@@ -101,6 +99,13 @@ select.title {
 
 .jh-refresh {
     margin-left: 5px    !important;
+    margin-top: -2px   !important;
+    background-color: #fbfbfb !important;    
+}
+
+div.listButtons input {
+  background: #fbfbfb   !important; 
+  margin-top: 2px   !important;
 }
 
 .piped li {
