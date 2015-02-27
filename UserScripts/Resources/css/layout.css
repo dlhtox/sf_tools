@@ -1,85 +1,84 @@
 nav {
-    background-color: #1797C0
+    background-color: #2e5e86   !important;
 }
+
 #tabBar a {
-    color: #F5F5F5;
-    font-size: 10px;    
+    color: #F5F5F5  !important;
+    font-size: 10px !important;    
 }
 
 #tabBar img {
-    display: none;
+    display: none   !important;
 }
 
 td.sidebarCell {
-    display: none;
+    display: none   !important;
 }
 
 .controls img {
-    display: none;
+    display: none   !important;
 }
 
 .toggleButton {
-    display: none;
+    display: none   !important;
 }
 
 #presence_widget {
-display: none;    
+display: none   !important;    
 }
 
 #AppBodyHeader table {
-    display: none;
+    display: none   !important;
 }
 
 select.title {
-    background-color: #F5F5F5;
-    font-size: 11px;
-    padding: 3px;
+    background-color: #F5F5F5   !important;
+    font-size: 11px !important;
+    padding: 3px    !important;
 }
 
 .linkBar {
-    background-color: #ffffff;
-    border-style: none;
-    height: 20px;
-    margin: 0px;
-    padding-left: 0px;
-    text-transform: uppercase;
+    background-color: #ffffff   !important;
+    border-style: none  !important;
+    height: 20px    !important;
+    margin: 0px !important;
+    padding-left: 0px   !important;
+    text-transform: uppercase   !important;
 }
 
 .x-grid3-hd-checkbox, input.checkbox, .x-grid3-cell-first, .x-grid3-td-checkbox, .chatterFollowUnfollowAction {
-    display: none;
+    display: none   !important;
 }
 
 .jh-background {
-    background-color:#e8e8e8;
+    background-color:#e8e8e8    !important;
 }
 .x-grid3-hd-row, .linkBar, .bottomNav {
-    background-color:#e8e8e8;
+    background-color:#e8e8e8    !important;
 }
 
 .jh-hidden {
-    display: none;
+    display: none   !important;
 }
 
-nav {
-    background-color: #2e5e86;
-}
+
 
 .jh-active, .jh-active a {
-    color: #2e5e86;
-    background-color: #e2e6e7;
-    border-color: #e2e6e7;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    box-shadow: none;
+    color: #2e5e86  !important;
+    background-color: #e2e6e7   !important;
+    border-color: #e2e6e7   !important;
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px    !important;
+    box-shadow: none    !important;
 }
 
 .brandPrimaryBrd {
-    border-color: #e2e6e7;
+    border-color: #e2e6e7   !important;
 }
 
 #bodyCell {
-    background-color: #e8e8e8;
+    background-color: #e8e8e8   !important;
 }
 .x-grid3-row {
-    border: none;
+    border: none    !important;
 }
