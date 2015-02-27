@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name       SF_color_coding
 // @namespace  https://github.com/b1kjsh/sf_tools
-// @version    0.50
+// @version    1.00
 // @grant       GM_getResourceText
 // @grant       GM_addStyle
 // @description  Days Since Updated and the Case Status column is required for this script.
