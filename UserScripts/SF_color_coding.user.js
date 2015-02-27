@@ -209,6 +209,7 @@ function color() {
         $('.x-grid3-hd-row').addClass('jh-background');
         $('.linkBar').addClass('jh-background');
         $('.bottomNav').addClass('jh-background');
+        $('.zen-active').addClass('jh-active');
         setTimeout(function() {
             if (window.location.href.indexOf("https://na19.salesforce.com/500") > -1 ) {
                 if ($('.x-grid3-row-table').length){
