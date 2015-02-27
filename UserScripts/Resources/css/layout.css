@@ -63,7 +63,7 @@ select.title {
 
 
 
-.jh-active, .jh-active a {
+.zen-active, .zen-active a, .jh-active, .jh-active a {
     color: #2e5e86  !important;
     background-color: #e2e6e7   !important;
     border-color: #e2e6e7   !important;
@@ -81,4 +81,32 @@ select.title {
 }
 .x-grid3-row {
     border: none    !important;
+}
+
+.topNav {
+    width: 90%  !important;
+    height: 30px    !important;
+    float: left !important;
+}
+
+.subNav {
+    width: 10%  !important;
+    height: 30px    !important;
+    float: left !important;
+}
+
+.listBody {
+    clear: both !important;
+}
+
+.jh-refresh {
+    margin-left: 5px    !important;
+}
+
+.piped li {
+    border: none    !important;
+}
+
+body.sfdcBody {
+    background: #385165 !important;
 }

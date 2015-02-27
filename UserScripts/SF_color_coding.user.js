@@ -24,8 +24,7 @@ $(document).ready(function () {
     var jh_CSS = GM_getResourceText("jh_CSS");
     var jh_CSS_layout = GM_getResourceText("jh_CSS_layout");
     GM_addStyle (jh_CSS);
-    GM_addStyle (jh_CSS_layout);
-
+    GM_addStyle (jh_CSS_layout);    
 
     function getCases() {
         var selector = $(".x-grid3-td-CASES_CASE_NUMBER");
@@ -42,6 +41,8 @@ $(document).ready(function () {
             }
         });
     }
+
+
 
     function colorAged() {
         console.log('colorAged()','---Checking Case Age---');
@@ -249,9 +250,16 @@ onReadyStateChange;
 function openReplacement(method, url, async, user, password) {
     var syncMode = async !== false ? 'async' : 'sync';
     console.warn('Preparing ' + syncMode + ' HTTP request : ' + method + ' ' + url);
+    if ($('.jh-refresh').length < 1) {
+        $('.refreshListButton').toggleClass('jh-hidden');
+        $('.refreshListButton').clone().attr('id',id += 1).addClass('jh-refresh').toggleClass('jh-hidden').insertAfter('div.filterLinks');
+    };
+        
+
     if (/ListServlet/.test(url)){
         if (debug) {console.log('openReplacement()','Case Refresh Detected! Attempting to color found objects!');}
         setTimeout(function () {
+        $('#00B13000009tzTL_refresh').remove();
          color();
          colorAged();
          getCases();
